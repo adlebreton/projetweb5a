@@ -1,4 +1,77 @@
 p {
     display: table;
     margin: 25% auto;
+    font-size: 1vw;
+    font-style: italic;
+    color: #999999;
+
 }
+
+a{
+    color:  #B888FC !important;
+}
+
+a:hover{
+    color:#B666FC !important;
+    cursor: pointer; 
+}
+
+h2 {
+    text-align: center;
+    margin: 4% 0;
+    font-family: Tahoma, sans-serif;
+    font-size: 2.5vw;
+    font-weight: 600;
+    color: #999999;
+
+}
+
+button{
+    font-family:  sans-serif;
+    border-radius: 15px;
+    border: none;
+    background-color: #B888FC;
+    color: #fff;
+    font-size: 1.8vw;
+    padding:5px 35px;
+    box-shadow: none;
+}
+
+button:hover{
+    background-color: #B999FC;
+
+}
+
+#subscribe, #connexion, .password, #error{
+    display: table;
+    margin: 2% auto;
+}
+
+#error{
+    color: red;
+}
+input{
+    display: table;
+    margin: 2% auto;
+    border: none;
+    border-bottom: 1px solid #F2F2F2;
+    width: 60%;
+}
+::placeholder { 
+    text-align: center;
+    opacity: 1; 
+  }
+  
+
+#panel {
+    border: 1px solid #F6F6F6;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(171,171,171,0.75);
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(171,171,171,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(171,171,171,0.75);
+    position: relative;
+    top:15vh;
+    height: 75vh;
+}
+
