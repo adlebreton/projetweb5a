@@ -9,6 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { AddictPanelComponent } from './addict-panel/addict-panel.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AddictPanelComponent } from './addict-panel/addict-panel.component';
     AuthComponent,
     MainComponent,
     AddictPanelComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

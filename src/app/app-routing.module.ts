@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from '../app/auth/auth.component';
 import { AddictPanelComponent } from './addict-panel/addict-panel.component';
 import { MainComponent } from './main/main.component';
+import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '',  component:HomeComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'main', component: MainComponent },
   { path: 'addictions', component: AddictPanelComponent },
