@@ -154,20 +154,48 @@ input[type='radio']#section4:checked ~ .cover {
 
 
 #box{
-    height: 450px;
+    height: 480px;
 
     padding:2%;
+    
 } 
 
 #boxIn{
 height: 100%;
     border-radius: 20px;
     box-shadow: 2px 2px 4px #999;
+
 }
 
-#boxIn h2{
+
+
+#boxIn p{
+    margin:2% 0 0 0%;
+    font-size: 12px;
+    color:#999 !important;
+    font-family: Tahoma, sans-serif;
+}
+
+.rightTxt{
+    text-align: right;
+    padding: 1%;
+    border-radius: 20px;
+
+}
+
+.leftTxt{
+
+    text-align: left;
+padding: 1%;
+    border-radius: 20px;
+
+
+}
+
+
+.leftTxt h2{
     margin:0 0 0 0%;
-    text-align: start;
+    text-align: left;
     left:0;
     font-size: 25px;
     color:#999 !important;
@@ -175,9 +203,12 @@ height: 100%;
     font-weight: bold;
 }
 
-#boxIn p{
-    margin:2% 0 0 0%;
-    font-size: 12px;
+.rightTxt h2{
+    margin:0 0 0 0%;
+    text-align: right;
+    left:0;
+    font-size: 25px;
     color:#999 !important;
     font-family: Tahoma, sans-serif;
+    font-weight: bold;
 }
