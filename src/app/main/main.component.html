@@ -43,7 +43,7 @@
     </div>
 
     <div id="" class="col s6 m6 l6" >
-        <button id="addGoalBtn"><p >+</p></button>
+        <button id="addGoalBtn"(click)="Add()"><p >+</p></button>
     </div>
 </div>
 
@@ -63,16 +63,18 @@
         </div>
     </div>
 
-    <div class="col s12 m12 l12" style="display: flex;">
+    <div class="col s12 m12 l12" style="display: flex;"*ngFor="let objectif of objList">
         <div class="col s6 m6 l6">
             <ul>
-                <li>Second objectif de test</li>
+                <li >
+                     {{objectif.name}}
+                  </li>
             </ul>
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
                 <input type="checkbox"/>
-                <span class="slider"></span>
+                <span class="slider"></span> <button id="suppGoalBtn"(click)="Supp(objectif.id)"><p >x</p></button> 
             </label>
               
         </div>
