@@ -66,15 +66,15 @@
     <div class="col s12 m12 l12" style="display: flex;"*ngFor="let objectif of objList">
         <div class="col s6 m6 l6">
             <ul>
-                <li >
-                     {{objectif.name}}
-                  </li>
+                <li>
+                    {{objectif.name}}
+                </li>
             </ul>
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
                 <input type="checkbox"/>
-                <span class="slider"></span> <button id="suppGoalBtn"(click)="Supp(objectif.id)"><p >x</p></button> 
+                <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif.id)"><p >x</p></button> 
             </label>
               
         </div>

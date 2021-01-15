@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+
+import { Confirmpopupservice } from './confirm-popup.service';
+
 import {Objectif} from './objectif';
+
 
 @Component({
   selector: 'app-main',
@@ -8,29 +12,37 @@ import {Objectif} from './objectif';
 })
 export class MainComponent implements OnInit {
 
-  id: number | undefined;
-  name: string | undefined;
-  objList: Array<Objectif> =[{id:0, name:"essai0"},{id:1,name:"essai1"},{id:2,name:"essai2"}];
+ 
+  objList: Array<Objectif> =[];
   nb:number=0;
-  constructor() { }
+  constructor(private confirmationDialogService: Confirmpopupservice) {}
 
   ngOnInit() {
+  }
+
+  openConfirmationDialog(i:number) 
+  {
+    this.confirmationDialogService.confirm("Voulez vous vraiment supprimer cet objectif ?","")
+    .then((confirmed) => this.Supp(i,confirmed))
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   Add(){
     let objObj = new Objectif();
     objObj.id=this.nb;
-    objObj.name="TEST";
+    objObj.name="TEST"+this.nb;
     this.objList.push(objObj);
-    this.name="";
-    this.id=0;
     this.nb+=1;
-
+    
   }
 
-  Supp(i:number)
+  Supp(i:number,b:boolean)
   {
-    this.objList.splice(i,1);
+    if(b==true)
+    {
+      this.objList.splice(i,1);
+    }
+    
   }
 
 }

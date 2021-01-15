@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { AddictPanelComponent } from './addict-panel/addict-panel.component';
 import { HomeComponent } from './home/home.component';
+import { Confirmpopupservice } from './main/confirm-popup.service';
+import { ConfirmationDialogComponent } from './main/confirm-popup.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { HomeComponent } from './home/home.component';
 
 
   ],
-  providers: [],
+  providers: [Confirmpopupservice],
+  entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
