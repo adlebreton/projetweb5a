@@ -1,8 +1,6 @@
-
-
 <div id="section" style="display: flex;">
     <div class="col s2 m2 l2">
-        <div  id="profilPic">
+        <div id="profilPic">
             <img id="profilScreen" src="../../assets/images/user.png">
         </div>
     </div>
@@ -12,27 +10,29 @@
         <p>Addiction #002</p>
     </div>
     <div class="bubleSection col s2 m2 l2">
-        <div  class="bubleInfos">
+        <div class="bubleInfos">
             <p>X</p>
         </div>
         <p>Jours défis</p>
     </div>
     <div id="" class="bubleSection col s2 m2 l2">
-        <div  class="bubleInfos">
+        <div class="bubleInfos">
             <p>X</p>
         </div>
         <p>Jours succès</p>
 
     </div>
     <div id="" class="bubleSection col s2 m2 l2">
-        <div  class="bubleInfos">
+        <div class="bubleInfos">
             <p>X</p>
         </div>
         <p>Moyenne jours</p>
 
     </div>
     <div id="" class="col s2 m2 l2">
-        <button id="addBtn"><p >+</p></button>
+        <button id="addBtn">
+            <p>+</p>
+        </button>
     </div>
 </div>
 
@@ -42,8 +42,10 @@
         <p>Objectifs</p>
     </div>
 
-    <div id="" class="col s6 m6 l6" >
-        <button id="addGoalBtn"(click)="Add()"><p >+</p></button>
+    <div id="" class="col s6 m6 l6">
+        <button id="addGoalBtn" (click)="openConfirmationDialogAdd()">
+            <p>+</p>
+        </button>
     </div>
 </div>
 
@@ -56,14 +58,14 @@
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
-                <input type="checkbox"/>
+                <input type="checkbox" />
                 <span class="slider"></span>
-              </label>
-              
+            </label>
+
         </div>
     </div>
 
-    <div class="col s12 m12 l12" style="display: flex;"*ngFor="let objectif of objList">
+    <div class="col s12 m12 l12" style="display: flex;" *ngFor="let objectif of objList">
         <div class="col s6 m6 l6">
             <ul>
                 <li>
@@ -73,13 +75,16 @@
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
-                <input type="checkbox"/>
-                <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif.id)"><p >x</p></button> 
+                <input type="checkbox" />
+                <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif.id)">
+                    <p>x</p>
+                </button>
             </label>
-              
+            
         </div>
     </div>
 </div>
+
 
 
 <div id="result" class="col s12 m12 l12">

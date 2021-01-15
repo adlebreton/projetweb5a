@@ -9,7 +9,6 @@ import { mainModule } from 'process';
 })
 export class ConfirmationDialogComponent implements OnInit {
 
-
   constructor(private activeModal: NgbActiveModal) { }
 
   ngOnInit() {
