@@ -1,7 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 
 import { Confirmpopupservice } from './confirm-popup.service';
-import { ConfirmpopupserviceAdd } from './confirm-popup.service - Add';
+import { MatDialog } from '@angular/material/dialog';
+
+import { ModalComponent } from './modal.component';
 
 import {Objectif} from './objectif';
 
@@ -15,12 +17,23 @@ export class MainComponent implements OnInit {
 
   objList: Array<Objectif> =[];
   nb:number=0;
- 
-  constructor(private confirmationDialogService: Confirmpopupservice, private confirmationDialogServiceAdd: ConfirmpopupserviceAdd) {}
+  name: any;
+  obj: any;
+
+  constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog) {}
 
   ngOnInit() {
   }
-  
+  openModal() {
+    const dialogRef =  this.dialog.open(ModalComponent, {data: {name: this.name}, disableClose: true});
+    dialogRef.afterClosed().subscribe((submit) => {
+      if (submit) {
+        this.obj = submit;
+        this.Add(this.obj);
+      }   
+    })
+   }
+
   openConfirmationDialog(i:number) 
   {
     this.confirmationDialogService.confirm("","")
@@ -28,20 +41,13 @@ export class MainComponent implements OnInit {
     .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-  openConfirmationDialogAdd() 
-  {
-    this.confirmationDialogServiceAdd.confirm("","")
-    .then((confirmed) => this.Add())
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  }
 
 
-
-  Add(){
+  Add(texte :string){
    
     let objObj = new Objectif();
     objObj.id=this.nb;
-    objObj.name="TEST"+this.nb;
+    objObj.name=this.nb+": "+texte;
     this.objList.push(objObj);
     this.nb+=1;
     

@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'  
-import { ReactiveFormsModule} from '@angular/forms' 
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './main/modal.component';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,8 +15,10 @@ import { AddictPanelComponent } from './addict-panel/addict-panel.component';
 import { HomeComponent } from './home/home.component';
 import { Confirmpopupservice } from './main/confirm-popup.service';
 import { ConfirmationDialogComponent } from './main/confirm-popup.component';
-import { ConfirmationDialogComponentAdd } from './main/confirm-popup.component - Add';
-import { ConfirmpopupserviceAdd } from './main/confirm-popup.service - Add';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -24,18 +28,20 @@ import { ConfirmpopupserviceAdd } from './main/confirm-popup.service - Add';
     MainComponent,
     AddictPanelComponent,
     HomeComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-   FormsModule,
-
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule, NoopAnimationsModule
 
   ],
-  providers: [Confirmpopupservice, ConfirmpopupserviceAdd],
-  entryComponents: [ ConfirmationDialogComponent, ConfirmationDialogComponentAdd ],
+  providers: [Confirmpopupservice],
+  entryComponents: [ConfirmationDialogComponent, ModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

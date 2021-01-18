@@ -43,11 +43,12 @@
     </div>
 
     <div id="" class="col s6 m6 l6">
-        <button id="addGoalBtn" (click)="openConfirmationDialogAdd()">
+        <button id="addGoalBtn" data-toggle="modal" data-target="#openModal" (click)="openModal()">
             <p>+</p>
         </button>
     </div>
 </div>
+
 
 <div id="goalPanel">
     <div class="col s12 m12 l12" style="display: flex; margin-top: 20px;">
@@ -80,7 +81,7 @@
                     <p>x</p>
                 </button>
             </label>
-            
+
         </div>
     </div>
 </div>

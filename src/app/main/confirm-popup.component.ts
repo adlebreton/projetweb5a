@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { mainModule } from 'process';
+
 
 
 @Component({
@@ -8,6 +8,7 @@ import { mainModule } from 'process';
   templateUrl: './confirm-popup.html',
 })
 export class ConfirmationDialogComponent implements OnInit {
+  [x: string]: any;
 
   constructor(private activeModal: NgbActiveModal) { }
 
