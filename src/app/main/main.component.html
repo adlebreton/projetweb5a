@@ -7,7 +7,7 @@
     <div id="" class="col s2 m2 l2">
         <h3>#NomUtilisateur</h3>
         <p>Addiction #001</p>
-        <p>Addiction #002</p>
+        <p></p>
     </div>
     <div class="bubleSection col s2 m2 l2">
         <div class="bubleInfos">
@@ -30,7 +30,9 @@
 
     </div>
     <div id="" class="col s2 m2 l2">
-        <button id="addBtn">
+       
+        <button id="addBtn" [routerLink] = "['../addictions']" >
+            
             <p>+</p>
         </button>
     </div>
@@ -51,20 +53,7 @@
 
 
 <div id="goalPanel">
-    <div class="col s12 m12 l12" style="display: flex; margin-top: 20px;">
-        <div class="col s6 m6 l6">
-            <ul>
-                <li>Premier objectif de </li>
-            </ul>
-        </div>
-        <div class="col s6 m6 l6">
-            <label class="toggle">
-                <input type="checkbox" />
-                <span class="slider"></span>
-            </label>
-
-        </div>
-    </div>
+   
 
     <div class="col s12 m12 l12" style="display: flex;" *ngFor="let objectif of objList">
         <div class="col s6 m6 l6">

@@ -4,6 +4,7 @@ import { Confirmpopupservice } from './confirm-popup.service';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ModalComponent } from './modal.component';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import {Objectif} from './objectif';
 
@@ -20,10 +21,16 @@ export class MainComponent implements OnInit {
   name: any;
   obj: any;
 
-  constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog) {}
+  constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
+    private router: Router) {}
 
   ngOnInit() {
   }
+
+  onClickConnexion() {
+    this.router.navigate(['../addictions'], {relativeTo: this.route});
+  }
+
   openModal() {
     const dialogRef =  this.dialog.open(ModalComponent, {data: {name: this.name}, disableClose: true});
     dialogRef.afterClosed().subscribe((submit) => {
@@ -34,6 +41,7 @@ export class MainComponent implements OnInit {
     })
    }
 
+
   openConfirmationDialog(i:number) 
   {
     this.confirmationDialogService.confirm("","")
@@ -42,17 +50,17 @@ export class MainComponent implements OnInit {
   }
 
 
-
   Add(texte :string){
    
     let objObj = new Objectif();
     objObj.id=this.nb;
-    objObj.name=this.nb+": "+texte;
+    objObj.name=texte;
     this.objList.push(objObj);
     this.nb+=1;
     
   }
 
+  
 
 
   
