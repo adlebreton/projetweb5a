@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseapiKey: "AIzaSyAIl06ZRQeM5O-DK9njiR1crxd3VzgwpVw",
+  firebaseAPIKey: "AIzaSyAIl06ZRQeM5O-DK9njiR1crxd3VzgwpVw",
   firebaseConfig : {
     apiKey: "AIzaSyAIl06ZRQeM5O-DK9njiR1crxd3VzgwpVw",
     authDomain: "stopaddict-58d09.firebaseapp.com",
