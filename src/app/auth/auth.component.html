@@ -69,7 +69,7 @@
 
         <p *ngIf="!onSubscribe" (click)="onSignup()" class="password">Première visite ? <a>Inscrivez-vous</a></p> 
         
-        <p *ngIf="!onSubscribe" (click)="onSignin()" class="password">Mot de passe <a >oublié</a></p> 
+        <p *ngIf="!onSubscribe" (click)="onPasswordForget()" class="password"><a>Mot de passe oublié</a></p> 
         <p *ngIf="fail"  id="error">{{ error }}</p>
 
     </form>
