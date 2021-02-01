@@ -110,6 +110,29 @@ position: relative;
 
 }
 
+
+#suppGoalBtn{
+  position: relative;
+  top: 0;
+  left: 80%;
+  margin-top: 5px;
+  margin-left: 15px;
+  width:30px;
+  height:30px;
+  border-radius: 60px;
+  border: none;
+  background-color: #ff0000;
+
+}
+#suppGoalBtn p {
+  margin-top: -5px;
+  font-size: 25px;
+  color:white !important;
+  font-family: Tahoma, sans-serif;
+  font-weight: bold;
+
+}
+
 #goalPanel{
     display: table;
     margin: 0 auto;
