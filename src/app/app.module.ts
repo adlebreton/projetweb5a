@@ -17,8 +17,12 @@ import { Confirmpopupservice } from './main/confirm-popup.service';
 import { ConfirmationDialogComponent } from './main/confirm-popup.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {AngularFireModule} from "@angular/fire"; 
+import {AngularFirestoreModule} from "@angular/fire/firestore"; 
+import {environment} from "src/environments/environment"; 
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -38,8 +42,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    BrowserAnimationsModule, NoopAnimationsModule, NgbModule
 
+    BrowserAnimationsModule, NoopAnimationsModule,
+    AngularFireModule.initializeApp (environment.firebaseConfig), 
+    AngularFirestoreModule 
+    BrowserAnimationsModule, NoopAnimationsModule, NgbModule
+    
   ],
   providers: [Confirmpopupservice],
   entryComponents: [ConfirmationDialogComponent, ModalComponent],

@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ModalComponent {
 
   name;
-  text:string="hh";
+  text:string="";
   obj: any;
 
   constructor(private dialogRef: MatDialogRef<ModalComponent>,
