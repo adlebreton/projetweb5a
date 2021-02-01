@@ -7,7 +7,8 @@ import { ModalComponent } from './modal.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import {Objectif} from './objectif';
-
+import {User} from '../auth/user.model';
+import { OrdersService } from './main.component.service';
 
 @Component({
   selector: 'app-main',
@@ -20,12 +21,26 @@ export class MainComponent implements OnInit {
   nb:number=0;
   name: any;
   obj: any;
+  ordersService!: OrdersService;
+ 
+
 
   constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
     private router: Router) {}
 
   ngOnInit() {
   }
+
+  /*onSubmit () { 
+    this.ordersService.form.value.coffeeOrder = this.coffeeOrder; 
+    let data = this.ordersService.form.value; 
+    
+   this.ordersService.createCoffeeOrder (data) 
+       .then (res => { 
+           / * faites quelque chose ici .... 
+           peut-être effacer le formulaire ou donner un message de réussite * / 
+       }); 
+} */
 
   onClickConnexion() {
     this.router.navigate(['../addictions'], {relativeTo: this.route});
@@ -60,15 +75,13 @@ export class MainComponent implements OnInit {
     
   }
 
-  
 
-
-  
   Supp(i:number,b:boolean)
   {
     if(b==true)
     {
       this.objList.splice(i,1);
+      this.nb-=1;
     }
     
   }

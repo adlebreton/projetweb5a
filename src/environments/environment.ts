@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  firebaseAPIKey: 'AIzaSyAIl06ZRQeM5O-DK9njiR1crxd3VzgwpVw'
+  firebaseConfig : {
+    apiKey: "AIzaSyAIl06ZRQeM5O-DK9njiR1crxd3VzgwpVw",
+    authDomain: "stopaddict-58d09.firebaseapp.com",
+    databaseURL: "https://stopaddict-58d09-default-rtdb.firebaseio.com",
+    projectId: "stopaddict-58d09",
+    storageBucket: "stopaddict-58d09.appspot.com",
+    messagingSenderId: "605086688403",
+    appId: "1:605086688403:web:a96eb89345dc9bca351966"
+  }
 
 };
 
