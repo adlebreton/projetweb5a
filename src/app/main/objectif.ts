@@ -4,8 +4,8 @@ export class Objectif {
   
     id!: number;
     name: string | undefined;
-    check: boolean = false;
-  
+    check: boolean=false;
+
   }
 
   

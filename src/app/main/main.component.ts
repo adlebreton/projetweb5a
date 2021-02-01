@@ -7,8 +7,12 @@ import { ModalComponent } from './modal.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import {Objectif} from './objectif';
+
 import {User} from '../auth/user.model';
 import { OrdersService } from './main.component.service';
+
+import { CompileTemplateMetadata } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-main',
@@ -21,8 +25,9 @@ export class MainComponent implements OnInit {
   nb:number=0;
   name: any;
   obj: any;
+
   ordersService!: OrdersService;
- 
+  percent:number=0;
 
 
   constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
@@ -72,7 +77,23 @@ export class MainComponent implements OnInit {
     objObj.name=texte;
     this.objList.push(objObj);
     this.nb+=1;
-    
+    this.actualisePercent();
+  }
+
+
+  
+  toggleCheck(i:number){
+    this.objList[i].check=!this.objList[i].check;
+  }
+
+  actualisePercent(){
+    let compte=0;
+    for(let i=0; i<this.nb;i++){
+      if(this.objList[i].check){
+        compte++;
+      }
+    }
+    this.percent=(compte/this.nb)*100;
   }
 
 
@@ -81,7 +102,8 @@ export class MainComponent implements OnInit {
     if(b==true)
     {
       this.objList.splice(i,1);
-      this.nb-=1;
+      this.nb--;
+      this.actualisePercent();
     }
     
   }
