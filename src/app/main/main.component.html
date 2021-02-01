@@ -65,7 +65,7 @@
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
-                <input type="checkbox" />
+                <input type="checkbox" (click)="toggleCheck(objectif.id)" (click)="actualisePercent()"/>
                 <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif.id)">
                     <p>x</p>
                 </button>
@@ -79,6 +79,6 @@
 
 <div id="result" class="col s12 m12 l12">
     <p>Résultats</p>
-    <h2>75</h2>
+    <h2>{{percent|number:'1.0-0'}}</h2>
     <h3>%</h3>
 </div>

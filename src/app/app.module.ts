@@ -17,6 +17,7 @@ import { Confirmpopupservice } from './main/confirm-popup.service';
 import { ConfirmationDialogComponent } from './main/confirm-popup.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -37,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    BrowserAnimationsModule, NoopAnimationsModule
+    BrowserAnimationsModule, NoopAnimationsModule, NgbModule
 
   ],
   providers: [Confirmpopupservice],
