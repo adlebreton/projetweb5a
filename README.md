@@ -2,26 +2,25 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
-## Development server
+# Description 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+StopAddict is a proof of concept project around the idea of addictions manager. For patient in cure or individual people, the platform allows them to look at their goals and create their plannings in order to fight against addictions. Furthermore, as a webapp, StopAddict can give advices based on data analysis and keep contact with doctors. This is a university project realised in three months with three people.
 
-## Code scaffolding
+# Teams
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Eliott Denez - Creator, Front-end, Back-end, BI
+Adrien Lebreton - Front-end, Back-end, BI, Security
+Maxime Macé - UI UX Design, Devops, Front-end
 
-## Build
+# Technology
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+-AngularJS 
+-Firebase (API)
 
-## Running unit tests
+# Link
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Comming soon
 
-## Running end-to-end tests
+# Bugs note
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Not mentionned for now
