@@ -45,7 +45,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
     BrowserAnimationsModule, NoopAnimationsModule,
     AngularFireModule.initializeApp (environment.firebaseConfig), 
-    AngularFirestoreModule 
+    AngularFirestoreModule,
     BrowserAnimationsModule, NoopAnimationsModule, NgbModule
     
   ],

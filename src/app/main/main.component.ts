@@ -6,12 +6,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from './modal.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import {Objectif} from './objectif';
+import { Objectif } from './objectif';
 
-import {User} from '../auth/user.model';
-import { OrdersService } from './main.component.service';
+import { User } from '../auth/user.model';
+import { ListeService } from './main.component.service';
 
 import { CompileTemplateMetadata } from '@angular/compiler';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -21,91 +23,87 @@ import { CompileTemplateMetadata } from '@angular/compiler';
 })
 export class MainComponent implements OnInit {
 
-  objList: Array<Objectif> =[];
-  nb:number=0;
+
+  nb: number = 0;
   name: any;
   obj: any;
+  percent: number = 0;
+  objList: any;
 
-  ordersService!: OrdersService;
-  percent:number=0;
 
+  constructor(private confirmationDialogService: Confirmpopupservice, private dialog: MatDialog, private route: ActivatedRoute,
+    private router: Router, private listeService: ListeService) { }
 
-  constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
-    private router: Router) {}
+  recupereObj = () => this.listeService.recupereObjectifs().subscribe(res => (this.objList = res));
 
   ngOnInit() {
+    this.update();
+    this.actualisePercent();
   }
 
-  /*onSubmit () { 
-    this.ordersService.form.value.coffeeOrder = this.coffeeOrder; 
-    let data = this.ordersService.form.value; 
-    
-   this.ordersService.createCoffeeOrder (data) 
-       .then (res => { 
-           / * faites quelque chose ici .... 
-           peut-être effacer le formulaire ou donner un message de réussite * / 
-       }); 
-} */
+  update() {
+    this.recupereObj();
+   
+  }
+
 
   onClickConnexion() {
-    this.router.navigate(['../addictions'], {relativeTo: this.route});
+    this.router.navigate(['../addictions'], { relativeTo: this.route });
   }
 
   openModal() {
-    const dialogRef =  this.dialog.open(ModalComponent, {data: {name: this.name}, disableClose: true});
+    const dialogRef = this.dialog.open(ModalComponent, { data: { name: this.name }, disableClose: true });
     dialogRef.afterClosed().subscribe((submit) => {
       if (submit) {
         this.obj = submit;
         this.Add(this.obj);
-      }   
+      }
     })
-   }
-
-
-  openConfirmationDialog(i:number) 
-  {
-    this.confirmationDialogService.confirm("","")
-    .then((confirmed) => this.Supp(i,confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
+  openConfirmationDialog(_objectif: Objectif) {
+    this.confirmationDialogService.confirm("", "")
+      .then((confirmed) => this.Supp(_objectif, confirmed))
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
 
-  Add(texte :string){
-   
-    let objObj = new Objectif();
-    objObj.id=this.nb;
-    objObj.name=texte;
-    this.objList.push(objObj);
-    this.nb+=1;
+  Add(texte: string) {
+
+    this.obj = new Objectif(texte, false);
+    this.listeService.ajouteObjectif(this.obj)
+      .then(res => {
+        // On affiche un message et on vide le champs du formulaire
+      });
+
+    this.update();
     this.actualisePercent();
   }
 
+  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b);
 
+
+
+  actualisePercent() {
   
-  toggleCheck(i:number){
-    this.objList[i].check=!this.objList[i].check;
-  }
-
-  actualisePercent(){
-    let compte=0;
-    for(let i=0; i<this.nb;i++){
-      if(this.objList[i].check){
+    this.update();
+    let compte = 0;
+    for (let i = 0; i < this.objList.size; i++) {
+      if (this.objList[i].check) {
         compte++;
       }
     }
-    this.percent=(compte/this.nb)*100;
+    this.percent = (compte / this.objList.size) * 100;
+
   }
 
+  supprime = (data: any) => this.listeService.supprimeProduit(data);
 
-  Supp(i:number,b:boolean)
-  {
-    if(b==true)
-    {
-      this.objList.splice(i,1);
-      this.nb--;
+  Supp(_objectif: Objectif, b: boolean) {
+    if (b == true) {
+      this.supprime(_objectif);
       this.actualisePercent();
     }
-    
+
   }
 
 }
