@@ -6,7 +6,7 @@
     </div>
     <div id="" class="col s2 m2 l2">
         <h3>Name</h3>
-        <p>Addiction #001</p>
+        <p *ngFor="let addiction of addictList">  {{addiction.payload.doc.data().name}}</p>
         <p></p>
     </div>
     <div class="bubleSection col s2 m2 l2">
