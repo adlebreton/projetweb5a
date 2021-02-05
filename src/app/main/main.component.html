@@ -65,7 +65,7 @@
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
-                <input type="checkbox" (click)="toggleCheck(objectif,!objectif.payload.doc.data().check)" (click)="this.actualisePercent()" (click)= "update()" [(ngModel)]= "objectif.payload.doc.data().check" />
+                <input type="checkbox" (click)="toggleCheck(objectif,!objectif.payload.doc.data().check)" (click) ="actualisePercent()" (click)= "update()" [(ngModel)]= "objectif.payload.doc.data().check" />
                 <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif)">
                     <p>x</p>
                 </button>

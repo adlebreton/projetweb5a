@@ -23,6 +23,10 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {environment} from "src/environments/environment"; 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ForgotComponent } from './forgot/forgot.component';
+import { AngularFireModule as ap} from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ResetComponent } from './forgot/reset.component';
 
 
 @NgModule({
@@ -33,7 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MainComponent,
     AddictPanelComponent,
     HomeComponent,
-    ModalComponent
+    ModalComponent,
+    ForgotComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
@@ -42,14 +48,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-
     BrowserAnimationsModule, NoopAnimationsModule,
-    AngularFireModule.initializeApp (environment.firebaseConfig), 
+    AngularFireModule.initializeApp (environment.firebaseConfig),
+    ap.initializeApp (environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     BrowserAnimationsModule, NoopAnimationsModule, NgbModule
     
   ],
-  providers: [Confirmpopupservice],
+  providers: [Confirmpopupservice, AngularFireAuthModule],
   entryComponents: [ConfirmationDialogComponent, ModalComponent],
   bootstrap: [AppComponent]
 })

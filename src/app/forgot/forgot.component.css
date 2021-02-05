@@ -6,16 +6,22 @@ p {
     color: #999999;
 
 }
-
-a{
-    color:  #B888FC !important;
+h4 {
+    text-align: center;
+    margin: 1% 0;
+    font-family: Tahoma, sans-serif;
+    font-size: 2vw;
+    font-weight: 500;
+    color: #999999;
 }
 
-a:hover{
-    color:#B666FC !important;
-    cursor: pointer; 
+.err {
+    text-align: center;
+    font-family: Tahoma, sans-serif;
+    font-size: 2vw;
+    font-weight: 500;
+    color: #ff0505;
 }
-
 h2 {
     text-align: center;
     margin: 4% 0;
@@ -23,9 +29,25 @@ h2 {
     font-size: 2.5vw;
     font-weight: 600;
     color: #999999;
+
 }
+input:invalid {
+    box-shadow: 0 0 5px 1px red;
+  }
+  
+label {
+    display: table;
+    margin: 0% auto;
+    border: none;
+    width: 60%;
 
-
+    text-align: center;
+    font-family: Tahoma, sans-serif;
+    font-size: 1.5vw;
+    font-weight: 500;
+    color: #999999;
+   
+}
 
 button{
     font-family:  sans-serif;
@@ -36,21 +58,15 @@ button{
     font-size: 1.8vw;
     padding:5px 35px;
     box-shadow: none;
-}
-
-button:hover{
-    background-color: #B999FC;
-
-}
-
-#subscribe, #connexion, .password, #error{
     display: table;
     margin: 2% auto;
 }
 
-#error{
-    color: red;
+button:hover{
+    background-color: #B999FC;
 }
+
+
 input{
     display: table;
     margin: 2% auto;

@@ -2,9 +2,10 @@
 
 
     <div id="panel" class="col s8 m8 l8">
+        
         <h2 *ngIf="onSubscribe"> Inscription </h2>
         <h2 *ngIf="!onSubscribe"> Connexion </h2>
-        <h2 *ngIf="onForgetPassword"> Mot de passe oublié </h2>
+        <!--<h2 *ngIf="onForgetPassword"> Mot de passe oublié </h2>-->
 
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
 
@@ -47,7 +48,6 @@
 
             >
 
-
             <input 
             *ngIf="onSubscribe" 
             type="text" 
@@ -69,7 +69,7 @@
 
         <p *ngIf="!onSubscribe" (click)="onSignup()" class="password">Première visite ? <a>Inscrivez-vous</a></p> 
         
-        <p *ngIf="!onSubscribe" (click)="onPasswordForget()" class="password"><a>Mot de passe oublié</a></p> 
+        <p *ngIf="!onSubscribe"  class="password" [routerLink] = "['../forgot']"><a>Mot de passe oublié</a></p> 
         <p *ngIf="fail"  id="error">{{ error }}</p>
 
     </form>
