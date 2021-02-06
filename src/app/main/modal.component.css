@@ -1,3 +1,8 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: white;}
+
+
 input{
     display: table;
     margin: 2% auto;
@@ -17,4 +22,23 @@ input{
     font-size: 2vw;
     font-weight: 500;
     color: #999999;
+}
+
+button{
+  border-radius: 5px;
+}
+
+#btnNo{
+  background-color: #FAB4CF;
+  margin-right: 25vw;
+  color:white;
+}
+
+#btnYes{
+  background-color: #87D6B8 ;
+  color:white;
+}
+
+.flex{
+  display: flex;
 }

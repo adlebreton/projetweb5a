@@ -10,7 +10,7 @@
   <h4>Veuillez rentrer le nom</h4>
   </div>
   <input class="form-control" type="text" placeholder="Rentrer le nom" [(ngModel)]="obj"><br> <br>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="onSubmit()">Valider</button>
+  <div class="modal-footer flex">
+    <button id="btnNo" type="button" class="btn " (click)="onCancel()">Cancel</button>
+    <button id="btnYes" type="button" class="btn " (click)="onSubmit()">Valider</button>
   </div>

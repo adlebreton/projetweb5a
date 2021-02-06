@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewEncapsulation, OnInit } from '@angular/core';
 import { ActivatedRoute , Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent   {
 

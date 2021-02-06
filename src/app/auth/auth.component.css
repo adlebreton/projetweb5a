@@ -1,3 +1,23 @@
+#back {
+	background: linear-gradient(-45deg, #B555FC, #B888FC, #23a6d5, #23d5ab) ;
+	background-size: 400% 400% ;
+	animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50% ;
+	}
+	50% {
+		background-position: 100% 50% ;
+	}
+	100% {
+		background-position: 0% 50% ;
+	}
+}
+
+
 p {
     display: table !important;
     margin: 0 auto !important;
@@ -65,6 +85,9 @@ input{
   
 
 #panel {
+    display: table;
+    margin: 0 auto;
+    padding: 3%;
     border: 1px solid #F6F6F6;
     background-color: #fff;
     border-radius: 10px;
@@ -73,7 +96,11 @@ input{
     -moz-box-shadow: 2px 2px 6px 0px rgba(171,171,171,0.75);
     position: relative;
     top:15vh;
-    height: 75vh;
+    height: 55vh;
+    width:50vw !important;
 }
 
+#panel input{
+    border-radius: 50px;
+}
 

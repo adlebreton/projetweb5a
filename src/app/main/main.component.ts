@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, ViewEncapsulation,OnInit } from '@angular/core';
 
 import { Confirmpopupservice } from './confirm-popup.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ import { AddictionService } from '../addict-panel/addict-panel.component.service
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],  
 })
 export class MainComponent implements OnInit {
 

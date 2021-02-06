@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewEncapsulation, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.css']
+  styleUrls: ['./forgot.component.css'],
 })
 
 @Injectable({
