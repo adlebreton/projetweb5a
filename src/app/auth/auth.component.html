@@ -36,7 +36,7 @@
 
 
             <input 
-            type="text" 
+            type="password" 
             id="password"
             placeholder="Mot de passe"
             class="form-control"
@@ -45,12 +45,12 @@
             required
             minlength="6"
             name="password"
-
+            appPassword
             >
 
             <input 
             *ngIf="onSubscribe" 
-            type="text" 
+            type="password" 
             id="confirmPassword" 
             placeholder="Confirmer mot de passe"
             class="form-control"
@@ -59,8 +59,9 @@
             required
             minlength="6"
             name="confirmPassword"
-
-            >
+            type="password"
+            appPassword
+                        >
 
 
         <button type="submit"    id="subscribe"> {{ onSubscribe ? 'Inscription' : "Connexion" }}</button> 

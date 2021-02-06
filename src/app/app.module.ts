@@ -27,6 +27,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { AngularFireModule as ap} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ResetComponent } from './forgot/reset.component';
+import { AppPasswordDirective } from './app-password.directive';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ResetComponent } from './forgot/reset.component';
     HomeComponent,
     ModalComponent,
     ForgotComponent,
-    ResetComponent
+    ResetComponent,
+    AppPasswordDirective
   ],
   imports: [
     BrowserModule,

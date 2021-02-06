@@ -1,9 +1,9 @@
 p {
-    display: table;
-    margin: 25% auto;
-    font-size: 1vw;
-    font-style: italic;
-    color: #999999;
+    display: table !important;
+    margin: 0 auto !important;
+    font-size: 1vw !important;
+    font-style: italic !important;
+    color: #999999 !important;
 
 }
 
@@ -75,4 +75,5 @@ input{
     top:15vh;
     height: 75vh;
 }
+
 
