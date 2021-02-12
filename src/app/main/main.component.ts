@@ -31,14 +31,16 @@ export class MainComponent implements OnInit {
   percent: number = 0;
   objList: any;
   addictList : any;
+  addictid!: string;
+  addictname!:string;
 
   constructor(private confirmationDialogService: Confirmpopupservice, private dialog: MatDialog, private route: ActivatedRoute,
   private router: Router, private listeService: ListeService,private addictService: AddictionService) { }
 
-  recupereObj = () => this.listeService.recupereObjectifs().subscribe(res => (this.objList = res));
+  recupereObj = () => this.listeService.recupereObjectifs(this.addictid).subscribe(res => (this.objList = res));
   recupereAdd = () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
 
-  actualisePercent = () => this.listeService.recupereObjectifs().subscribe(actions => {this.percent=0; this.nb=0;actions.forEach(action => 
+  actualisePercent = () => this.listeService.recupereObjectifs(this.addictid).subscribe(actions => {this.percent=0; this.nb=0;actions.forEach(action => 
       {
         if (action.payload.doc.data()['check'] == true) 
         {
@@ -50,11 +52,13 @@ export class MainComponent implements OnInit {
     }); 
 
   
-  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b);
+  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b, this.addictid);
  
-  supprime = (data: any) => this.listeService.supprimeProduit(data);
+  supprime = (data: any) => this.listeService.supprimeProduit(data, this.addictid);
 
   ngOnInit() {
+    this.addictid = this.route.snapshot.params['key'];
+    this.addictname = this.route.snapshot.params['key2'];
     this.update();
     this.actualisePercent();
   }
@@ -64,6 +68,14 @@ export class MainComponent implements OnInit {
     this.recupereAdd();
   }
 
+    reloadpage()
+    {
+      setTimeout(()=>{
+        window.location.reload();
+      }, 100);
+  
+  
+    }
 
   onClickConnexion() {
     this.router.navigate(['../addictions'], { relativeTo: this.route });
@@ -88,7 +100,7 @@ export class MainComponent implements OnInit {
   Add(texte: string) {
 
     this.obj = new Objectif(texte, false);
-    this.listeService.ajouteObjectif(this.obj)
+    this.listeService.ajouteObjectif(this.obj, this.addictid)
       .then(res => {
         // On affiche un message et on vide le champs du formulaire
       });

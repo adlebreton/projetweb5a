@@ -15,25 +15,24 @@ export class ListeService {
   constructor(private firestore: AngularFirestore) {}
 
 
-  ajouteObjectif(data: Objectif) {
+  ajouteObjectif(data: Objectif, addictid : string) {
 
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("Objectif")
-        .doc("user1").collection("objectifs_addictions1")
+      .collection("User1").doc("Addictions").collection("addictions").doc(addictid).collection("objectifs")
         .add(Object.assign({}, data))
         .then(res => { }, err => reject(err));
     });
   }
 
-  recupereObjectifs() {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").snapshotChanges();
+  recupereObjectifs(addictid : string) {
+    return this.firestore.collection("User1").doc("Addictions").collection("addictions").doc(addictid).collection("objectifs").snapshotChanges();
   }
-  updateProduit(data: any, ischecked: boolean) {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
+  updateProduit(data: any, ischecked: boolean, addictid : string) {
+    return this.firestore.collection("User1").doc("Addictions").collection("addictions").doc(addictid).collection("objectifs").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
   }
 
-  supprimeProduit(data: any) {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").doc(data.payload.doc.id).delete();
+  supprimeProduit(data: any, addictid : string) {
+    return this.firestore.collection("User1").doc("Addictions").collection("addictions").doc(addictid).collection("objectifs").doc(data.payload.doc.id).delete();
   }
 } 

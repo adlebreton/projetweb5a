@@ -18,7 +18,7 @@
         <div class="col s6 m6 l6">
             <ul>
                 <li>
-                    {{addiction.payload.doc.data().name}}
+                    <a [routerLink]="['../main',{ key: addiction.payload.doc.id , key2: addiction.payload.doc.data().name}]" >{{addiction.payload.doc.data().name}}</a>
                 </li>
             </ul>
         </div>

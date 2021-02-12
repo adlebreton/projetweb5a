@@ -6,8 +6,11 @@
     </div>
     <div id="" class="col s2 m2 l2">
         <h3>Name</h3>
-        <p *ngFor="let addiction of addictList">  {{addiction.payload.doc.data().name}}</p>
-        <p></p>
+        <ul>
+        <li *ngFor="let addiction of addictList">
+            <a (click)="reloadpage()"[routerLink]="['../main',{ key: addiction.payload.doc.id , key2: addiction.payload.doc.data().name}]">  {{addiction.payload.doc.data().name}}</a>
+        </li>
+        </ul>
     </div>
     <div class="bubleSection col s2 m2 l2">
         <div class="bubleInfos">
@@ -41,7 +44,7 @@
 
 <div id="goalLabel" style="display: flex;">
     <div id="" class="col s6 m6 l6">
-        <p>Objectifs</p>
+        <p>Objectifs {{addictname}}</p>
     </div>
 
     <div id="" class="col s6 m6 l6">

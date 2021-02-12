@@ -17,21 +17,24 @@ export class AddictionService {
 
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("Addiction")
-        .doc("user1").collection("addictions")
+        .collection("User1")
+        .doc("Addictions").collection("addictions")
         .add(Object.assign({}, data))
         .then(res => { }, err => reject(err));
     });
   }
 
   recupereAddictions() {
-    return this.firestore.collection("Addiction").doc("user1").collection("addictions").snapshotChanges();
+    return this.firestore.collection("User1")
+    .doc("Addictions").collection("addictions").snapshotChanges();
   }
   updateProduit(data: any, ischecked: boolean) {
-    return this.firestore.collection("Addiction").doc("user1").collection("addictions").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
+    return this.firestore.collection("User1")
+    .doc("Addictions").collection("addictions").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
   }
 
   supprimeProduit(data: any) {
-    return this.firestore.collection("Addiction").doc("user1").collection("addictions").doc(data.payload.doc.id).delete();
+    return this.firestore.collection("User1")
+    .doc("Addictions").collection("addictions").doc(data.payload.doc.id).delete();
   }
 } 
