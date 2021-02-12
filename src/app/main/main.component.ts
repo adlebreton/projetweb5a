@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, ViewEncapsulation,OnInit } from '@angular/core';
 
 import { Confirmpopupservice } from './confirm-popup.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,12 +14,13 @@ import { ListeService } from './main.component.service';
 import { CompileTemplateMetadata } from '@angular/compiler';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AddictionService } from '../addict-panel/addict-panel.component.service';
 
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],  
 })
 export class MainComponent implements OnInit {
 
@@ -29,12 +30,29 @@ export class MainComponent implements OnInit {
   obj: any;
   percent: number = 0;
   objList: any;
-
+  addictList : any;
 
   constructor(private confirmationDialogService: Confirmpopupservice, private dialog: MatDialog, private route: ActivatedRoute,
-    private router: Router, private listeService: ListeService) { }
+  private router: Router, private listeService: ListeService,private addictService: AddictionService) { }
 
   recupereObj = () => this.listeService.recupereObjectifs().subscribe(res => (this.objList = res));
+  recupereAdd = () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
+
+  actualisePercent = () => this.listeService.recupereObjectifs().subscribe(actions => {this.percent=0; this.nb=0;actions.forEach(action => 
+      {
+        if (action.payload.doc.data()['check'] == true) 
+        {
+          this.percent += 1;
+        }
+        this.nb+=1;
+      });
+      this.percent=(this.percent/this.nb) *100 ;
+    }); 
+
+  
+  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b);
+ 
+  supprime = (data: any) => this.listeService.supprimeProduit(data);
 
   ngOnInit() {
     this.update();
@@ -43,7 +61,7 @@ export class MainComponent implements OnInit {
 
   update() {
     this.recupereObj();
-   
+    this.recupereAdd();
   }
 
 
@@ -76,27 +94,10 @@ export class MainComponent implements OnInit {
       });
 
     this.update();
-    this.actualisePercent();
+   this.actualisePercent();
   }
 
-  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b);
-
-
-
-  actualisePercent() {
-  
-    this.update();
-    let compte = 0;
-    for (let i = 0; i < this.objList.size; i++) {
-      if (this.objList[i].check) {
-        compte++;
-      }
-    }
-    this.percent = (compte / this.objList.size) * 100;
-
-  }
-
-  supprime = (data: any) => this.listeService.supprimeProduit(data);
+ 
 
   Supp(_objectif: Objectif, b: boolean) {
     if (b == true) {

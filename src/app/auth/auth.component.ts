@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewEncapsulation, OnInit } from '@angular/core';
 import { ActivatedRoute , Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 
+
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from './modal.component';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent   {
 
   onSubscribe = true;
-  onForgetPassword = false;
+  //onForgetPassword = false;
   isLoading = false;
   error:string = "";
   fail = false;
+
 
   constructor(private route: ActivatedRoute ,
               private dialog: MatDialog,
@@ -33,36 +34,6 @@ export class AuthComponent   {
     this.onSubscribe = false;
   }
 
-  onPasswordForget(){
-    //this.onForgetPassword = true;
-    const dialogRef =  this.dialog.open(ModalComponent, {data:{}, disableClose: true});
-    dialogRef.afterClosed().subscribe((submit) => {
-      if (submit) {
-        //submit.texte
-        //chercher dans BDD (firebase) si l'email correspond a un utilisateur, si oui, envoyer email avec code
-        //emailJS?
-        var email  = require('emailjs/email');
-        var server  = email.server.connect({
-          user:    "admin@stopAdict.com", 
-          password:"password", 
-          host:    "smtp.stopAdict.com", 
-          ssl:     true,
-          port: 465
-       });
-       server.send({
-          text:    "Your message body text", 
-          from:    "<sender’s email>", 
-          to:      submit.texte,
-          subject: "Mot de passe stopAdict",
-        }, function(err, message) { 
-          if(err)
-            console.log(err);
-          else
-            res.json({success: true, msg: 'sent'});
-        });     
-      }   
-    });
-  }
  
   onSubmit(form: NgForm) {
     
@@ -100,6 +71,8 @@ export class AuthComponent   {
     form.reset();
   }
 
-  
+  onClickConnexion() {
+    this.router.navigate(['../forgot'], { relativeTo: this.route });
+  }
 
 }

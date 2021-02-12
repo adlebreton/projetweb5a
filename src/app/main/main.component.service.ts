@@ -4,35 +4,36 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Objectif } from './objectif';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ListeService {
+  percent: number=2;
 
-  constructor(private firestore: AngularFirestore) {
-  }
+  constructor(private firestore: AngularFirestore) {}
+
 
   ajouteObjectif(data: Objectif) {
 
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection("Objectif")
-        .doc("user1").collection("objectifs")
+        .doc("user1").collection("objectifs_addictions1")
         .add(Object.assign({}, data))
         .then(res => { }, err => reject(err));
     });
   }
 
   recupereObjectifs() {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs").snapshotChanges();
+    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").snapshotChanges();
   }
- 
   updateProduit(data: any, ischecked: boolean) {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
+    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").doc(data.payload.doc.id).set({ check: ischecked }, { merge: true });
   }
 
   supprimeProduit(data: any) {
-    return this.firestore.collection("Objectif").doc("user1").collection("objectifs").doc(data.payload.doc.id).delete();
+    return this.firestore.collection("Objectif").doc("user1").collection("objectifs_addictions1").doc(data.payload.doc.id).delete();
   }
 } 

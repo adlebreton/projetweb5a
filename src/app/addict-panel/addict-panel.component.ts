@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../main/modal.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {Addiction} from './addictions';
+import { AddictionService } from './addict-panel.component.service';
 
 @Component({
   selector: 'app-addict-panel',
@@ -14,16 +15,28 @@ import {Addiction} from './addictions';
 })
 export class AddictPanelComponent implements OnInit {
   
-  addictList: Array<Addiction> =[];
+  addictList: any;
   nb:number=0;
   name: any;
   addict: any;
 
   constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router,private addictService: AddictionService) {}
+
+    recupereAddict= () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
+    
+    toggleCheck = (o: Addiction, b: boolean) => this.addictService.updateProduit(o, b);
+    
+    supprime = (data: any) => this.addictService.supprimeProduit(data);
+
 
   ngOnInit() {
+    this.update();
   }
+  update() {
+    this.recupereAddict();
+  }
+
 
   onClickConnexion() {
     this.router.navigate(['../addictions'], {relativeTo: this.route});
@@ -40,31 +53,30 @@ export class AddictPanelComponent implements OnInit {
    }
 
 
-  openConfirmationDialog(i:number) 
+  openConfirmationDialog(_addiction: Addiction) 
   {
     this.confirmationDialogService.confirm("","")
-    .then((confirmed) => this.Supp(i,confirmed))
+    .then((confirmed) => this.Supp(_addiction,confirmed))
     .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 
   Add(texte :string){
    
-    let objAddict = new Addiction();
-    objAddict.id=this.nb;
-    objAddict.name=texte;
-    this.addictList.push(objAddict);
-    this.nb+=1;
+    this.addict = new Addiction(texte, false);
+    this.addictService.ajouteAddiction(this.addict)
+      .then(res => {
+        // On affiche un message et on vide le champs du formulaire
+      });
+
+    this.update();
     
   }
 
-  Supp(i:number,b:boolean)
-  {
-    if(b==true)
-    {
-      this.addictList.splice(i,1);
+  Supp(_addiction: Addiction, b: boolean) {
+    if (b == true) {
+      this.supprime(_addiction);
+
     }
-    
-  }
-
+}
 }
