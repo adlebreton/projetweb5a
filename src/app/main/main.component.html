@@ -5,7 +5,7 @@
         </div>
     </div>
     <div id="" class="col s2 m2 l2">
-        <h3>Name</h3>
+        <h3>{{name}}</h3>
         <ul>
         <li *ngFor="let addiction of addictList">
             <a (click)="reloadpage()"[routerLink]="['../main',{ key: addiction.payload.doc.id , key2: addiction.payload.doc.data().name}]">  {{addiction.payload.doc.data().name}}</a>

@@ -26,16 +26,18 @@ export class MainComponent implements OnInit {
 
 
   nb: number = 0;
-  name: any;
   obj: any;
   percent: number = 0;
   objList: any;
   addictList : any;
   addictid!: string;
   addictname!:string;
+  name: any;
 
   constructor(private confirmationDialogService: Confirmpopupservice, private dialog: MatDialog, private route: ActivatedRoute,
-  private router: Router, private listeService: ListeService,private addictService: AddictionService) { }
+  private router: Router, private listeService: ListeService,private addictService: AddictionService) { 
+
+  }
 
   recupereObj = () => this.listeService.recupereObjectifs(this.addictid).subscribe(res => (this.objList = res));
   recupereAdd = () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
@@ -57,6 +59,11 @@ export class MainComponent implements OnInit {
   supprime = (data: any) => this.listeService.supprimeProduit(data, this.addictid);
 
   ngOnInit() {
+    if(localStorage.getItem('userId')){
+      this.name = localStorage.getItem('userId');
+    }else{
+      this.name="Inconnus";
+    }
     this.addictid = this.route.snapshot.params['key'];
     this.addictname = this.route.snapshot.params['key2'];
     this.update();
