@@ -19,18 +19,27 @@ export class AddictPanelComponent implements OnInit {
   nb:number=0;
   name: any;
   addict: any;
+  id:any;
+
 
   constructor(private confirmationDialogService: Confirmpopupservice,private dialog: MatDialog,private route: ActivatedRoute,
     private router: Router,private addictService: AddictionService) {}
 
-    recupereAddict= () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
+    recupereAddict= () => this.addictService.recupereAddictions(this.id).subscribe(res => (this.addictList = res));
     
-    toggleCheck = (o: Addiction, b: boolean) => this.addictService.updateProduit(o, b);
+    toggleCheck = (o: Addiction, b: boolean) => this.addictService.updateProduit(o, b,this.id);
     
-    supprime = (data: any) => this.addictService.supprimeProduit(data);
+    supprime = (data: any) => this.addictService.supprimeProduit(data,this.id);
 
 
   ngOnInit() {
+
+    if(localStorage.getItem('userId')){
+      this.id = localStorage.getItem('userId');
+    }else{
+      this.id="Inconnus";
+    }
+    //this.id = this.route.snapshot.params['key'];
     this.update();
   }
   update() {
@@ -64,7 +73,7 @@ export class AddictPanelComponent implements OnInit {
   Add(texte :string){
    
     this.addict = new Addiction(texte, false);
-    this.addictService.ajouteAddiction(this.addict)
+    this.addictService.ajouteAddiction(this.addict,this.id)
       .then(res => {
         // On affiche un message et on vide le champs du formulaire
       });

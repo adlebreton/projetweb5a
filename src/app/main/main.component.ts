@@ -15,6 +15,7 @@ import { CompileTemplateMetadata } from '@angular/compiler';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AddictionService } from '../addict-panel/addict-panel.component.service';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -33,16 +34,17 @@ export class MainComponent implements OnInit {
   addictid!: string;
   addictname!:string;
   name: any;
+  first:string ="";
 
   constructor(private confirmationDialogService: Confirmpopupservice, private dialog: MatDialog, private route: ActivatedRoute,
   private router: Router, private listeService: ListeService,private addictService: AddictionService) { 
 
   }
 
-  recupereObj = () => this.listeService.recupereObjectifs(this.addictid).subscribe(res => (this.objList = res));
-  recupereAdd = () => this.addictService.recupereAddictions().subscribe(res => (this.addictList = res));
+  recupereObj = () => this.listeService.recupereObjectifs(this.addictid,this.name).subscribe(res => (this.objList = res));
+  recupereAdd = () => this.addictService.recupereAddictions(this.name).subscribe(res => (this.addictList = res));
 
-  actualisePercent = () => this.listeService.recupereObjectifs(this.addictid).subscribe(actions => {this.percent=0; this.nb=0;actions.forEach(action => 
+  actualisePercent = () => this.listeService.recupereObjectifs(this.addictid,this.name).subscribe(actions => {this.percent=0; this.nb=0;actions.forEach(action => 
       {
         if (action.payload.doc.data()['check'] == true) 
         {
@@ -53,10 +55,17 @@ export class MainComponent implements OnInit {
       this.percent=(this.percent/this.nb) *100 ;
     }); 
 
-  
-  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b, this.addictid);
+   getfirst = () => this.addictService.recupereAddictions(this.name).subscribe(actions => {actions.forEach(action => 
+      {
+          this.addictid = action.payload.doc.id;
+          this.addictname = action.payload.doc.data()['name'];
+      });
+
+    }); 
+    
+  toggleCheck = (o: Objectif, b: boolean) => this.listeService.updateProduit(o, b, this.addictid,this.name);
  
-  supprime = (data: any) => this.listeService.supprimeProduit(data, this.addictid);
+  supprime = (data: any) => this.listeService.supprimeProduit(data, this.addictid,this.name);
 
   ngOnInit() {
     if(localStorage.getItem('userId')){
@@ -64,10 +73,15 @@ export class MainComponent implements OnInit {
     }else{
       this.name="Inconnus";
     }
+  
     this.addictid = this.route.snapshot.params['key'];
     this.addictname = this.route.snapshot.params['key2'];
+    
+    
     this.update();
     this.actualisePercent();
+    
+    
   }
 
   update() {
@@ -77,6 +91,7 @@ export class MainComponent implements OnInit {
 
     reloadpage()
     {
+      
       setTimeout(()=>{
         window.location.reload();
       }, 100);
@@ -107,7 +122,7 @@ export class MainComponent implements OnInit {
   Add(texte: string) {
 
     this.obj = new Objectif(texte, false);
-    this.listeService.ajouteObjectif(this.obj, this.addictid)
+    this.listeService.ajouteObjectif(this.obj, this.addictid,this.name)
       .then(res => {
         // On affiche un message et on vide le champs du formulaire
       });

@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'forgot', component: ForgotComponent },
   { path: 'reset', component: ResetComponent },
   { path: 'main', data:{key:'value', key2:'value'},component: MainComponent },
-  { path: 'addictions', component: AddictPanelComponent },
+  { path: 'addictions',data:{key:'value'}, component: AddictPanelComponent },
 
 
 ];
