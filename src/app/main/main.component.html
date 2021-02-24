@@ -5,9 +5,12 @@
         </div>
     </div>
     <div id="" class="col s2 m2 l2">
-        <h3>#NomUtilisateur</h3>
-        <p>Addiction #001</p>
-        <p></p>
+        <h3>{{name}}</h3>
+        <ul>
+        <li *ngFor="let addiction of addictList">
+            <a (click)="reloadpage()"[routerLink]="['../main',{ key: addiction.payload.doc.id , key2: addiction.payload.doc.data().name}]">  {{addiction.payload.doc.data().name}}</a>
+        </li>
+        </ul>
     </div>
     <div class="bubleSection col s2 m2 l2">
         <div class="bubleInfos">
@@ -31,7 +34,7 @@
     </div>
     <div id="" class="col s2 m2 l2">
        
-        <button id="addBtn" [routerLink] = "['../addictions']" >
+        <button id="addBtn" [routerLink] = "['../addictions',{ key: name}]" >
             
             <p>+</p>
         </button>
@@ -41,7 +44,7 @@
 
 <div id="goalLabel" style="display: flex;">
     <div id="" class="col s6 m6 l6">
-        <p>Objectifs</p>
+        <p>Objectifs {{addictname}}</p>
     </div>
 
     <div id="" class="col s6 m6 l6">
@@ -59,14 +62,15 @@
         <div class="col s6 m6 l6">
             <ul>
                 <li>
-                    {{objectif.name}}
+                    {{objectif.payload.doc.data().name}}
                 </li>
             </ul>
         </div>
         <div class="col s6 m6 l6">
             <label class="toggle">
-                <input type="checkbox" (click)="toggleCheck(objectif.id)" (click)="actualisePercent()"/>
-                <span class="slider"></span> <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif.id)">
+                <input type="checkbox" (click)="toggleCheck(objectif,!objectif.payload.doc.data().check)" (click) ="actualisePercent()" (click)= "update()" [(ngModel)]= "objectif.payload.doc.data().check" />
+                <span class="slider"></span> 
+                <button id="suppGoalBtn" (click)="openConfirmationDialog(objectif)">
                     <p>x</p>
                 </button>
             </label>

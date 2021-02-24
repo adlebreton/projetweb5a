@@ -16,6 +16,7 @@ export class ModalComponent {
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.name = data.name;
+    this.text="objectif";
   }
 
   @HostListener('document:keyup.escape') onClose() {

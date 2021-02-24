@@ -23,4 +23,16 @@ Comming soon
 
 # Bugs note
 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+npm install firebase@7.24.0 angularfire2 --save
+
+import * as firebase from 'firebase/app';
+=======
 Not mentionned for now
+

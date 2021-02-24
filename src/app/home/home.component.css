@@ -1,3 +1,7 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: white;}
+
 p {
     font-size: 67px;
     color: #000;
@@ -211,4 +215,25 @@ padding: 1%;
     color:#999 !important;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+}
+
+#wallpaper1{
+  width: 100%;
+  background-image: url("../../assets/images/dna.jpg");
+}
+
+#wallpaper2{
+  width: 100%;
+  background-image: url("../../assets/images/pills.jpg") ;
+}
+
+
+#wallpaper3{
+  width: 100%;
+  background-image: url("../../assets/images/metal.jpg") ;
+}
+
+#wallpaper3{
+  width: 100%;
+  background-image: url("../../assets/images/dna2.jpg") ;
 }

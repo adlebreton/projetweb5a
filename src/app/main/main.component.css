@@ -1,3 +1,8 @@
+
+
+body{
+  background-color: white !important;
+}
 p {
    padding:0;
    margin: 0;
@@ -14,9 +19,10 @@ h3 {
     width:100% !important;
     height: 140px;
     padding: 1% 0;
-position: relative;
+    position: relative;
     top:55px;
     background-color: #B888FC;
+
 }
 
 #profilPic{
@@ -76,7 +82,7 @@ position: relative;
 
 #goalLabel{
     position: relative;
-    top: 125px;
+    top: 100px;
 }
 
 #goalLabel p {
@@ -116,16 +122,33 @@ position: relative;
   top: 0;
   left: 80%;
   margin-top: 5px;
-  margin-left: 15px;
+  margin-left: 1.5vw;
   width:30px;
   height:30px;
   border-radius: 60px;
   border: none;
-  background-color: #ff0000;
+  background-color: #FAB4CF;
 
 }
+
+
+#suppGoalBtn:hover{
+  position: relative;
+  top: 0;
+  left: 80%;
+  margin-top: 5px;
+  margin-left: 1.5vw;
+  width:30px;
+  height:30px;
+  border-radius: 60px;
+  border: 1px solid white;
+  background-color: #FF0000;
+  transition: ease .5s;
+
+}
+
 #suppGoalBtn p {
-  margin-top: -5px;
+  margin-top: -8px;
   font-size: 25px;
   color:white !important;
   font-family: Tahoma, sans-serif;
@@ -139,11 +162,12 @@ position: relative;
     position:relative;
     top: 140px;
     width:97%;
-    padding: 1% 0;
+    padding: 1% 0 0.6% 0;
     border: none;
     border-radius: 10px;
     background-color: #87D6B8;
-
+    box-shadow: -10px -10px 30px 4px rgba(0,0,0,0.1),
+    10px 10px 30px 4px rgba(45,78,255,0.15);
 }
 
 #goalPanel ul li{
