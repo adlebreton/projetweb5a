@@ -31,7 +31,9 @@ https://projetweb5a.vercel.app/
 # Bugs note
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
 Some responsive problem (when typping email adress, connexion.inscription..etc).
+
 Security
 
 ## Further help
