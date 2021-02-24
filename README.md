@@ -29,10 +29,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
+//if the nodes_modules don't want to build
 npm install firebase@7.24.0 angularfire2 --save
+import * as firebase from 'firebase/app'; in all asked files
 
-import * as firebase from 'firebase/app';
-=======
 Not mentionned for now
+
+
 
